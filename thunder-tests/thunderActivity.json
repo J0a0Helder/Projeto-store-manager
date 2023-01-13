@@ -18,11 +18,11 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/products",
-    "url": "http://localhost:3000/products/3",
+    "url": "http://localhost:3000/products/4",
     "method": "GET",
     "sortNum": 0,
     "created": "2023-01-13T19:26:10.226Z",
-    "modified": "2023-01-13T19:56:29.548Z",
+    "modified": "2023-01-13T20:26:44.668Z",
     "headers": [],
     "params": [],
     "tests": []
