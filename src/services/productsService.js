@@ -6,8 +6,11 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
-  const products = await productsModel.getById(id);
-  return products;
+  const product = await productsModel.getById(id);
+  if (!product) {
+    return { type: 'INVALID_ID', message: 'Product not found' };
+  }
+  return product;
 };
 
 const insertNew = async (name) => {

@@ -8,12 +8,31 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-01-13T22:30:38.581Z",
-    "modified": "2023-01-13T22:47:41.768Z",
+    "modified": "2023-01-15T15:34:39.053Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"joaoaoa\"\n}",
+      "raw": "{\n  \"name\": \"joaoaooa\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "cdb00008-f0f4-466d-8d9d-7e9b6614d9a1",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/sales",
+    "url": "http://localhost:3000/sales",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-01-16T18:34:48.759Z",
+    "modified": "2023-01-16T21:55:39.952Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 1\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 5\n  }\n]",
       "form": []
     },
     "tests": []
