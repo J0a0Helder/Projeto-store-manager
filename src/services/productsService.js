@@ -18,8 +18,17 @@ const insertNew = async (name) => {
   return { id, name };
 };
 
+const edit = async (name, id) => {
+  const editedProduct = await productsModel.edit(name, id);
+  if (editedProduct === 0) {
+    return { type: 'INVALID_ID', message: 'Product not found' };
+  }
+  return { id, name };
+};
+
 module.exports = {
   getAll,
   getById,
   insertNew,
+  edit,
 };

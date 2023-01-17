@@ -2,12 +2,12 @@ const connection = require('./connection');
 
 const insertNew = async (sales) => {
   const queryID = 'INSERT INTO StoreManager.sales (date) VALUES (CURRENT_TIMESTAMP());'; 
-  const [{ insertId }] = await connection.execute(queryID);
-  const values = [sales.map((sale) => [insertId, Number(sale.productId), Number(sale.quantity)])];
+  const [{ insertId }] = await connection.execute(queryID); // obg a mari na monitoria que me ajudou :D
+  const values = sales.map((sale) => [insertId, Number(sale.productId), Number(sale.quantity)]);
   const query = 'INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) VALUES ?';
   await connection.query(
   query,
-  values,
+  [values],
   );
   return insertId;
 };

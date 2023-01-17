@@ -18,8 +18,17 @@ const insertNew = async (req, res) => {
   res.status(201).send(newProduct);
 };
 
+const edit = async (req, res) => {
+  const { name } = req.body;
+  const { id } = req.params;
+  const editedProduct = await productsService.edit(name, id);
+  if (editedProduct.type) return res.status(404).json({ message: editedProduct.message });
+  res.status(200).send(editedProduct);
+};
+
 module.exports = {
   getAll,
   getById,
   insertNew,
+  edit,
 };
