@@ -26,6 +26,12 @@ const getAll = async () => {
   return sales;
 };
 
+const validateID = async (id) => {
+  const query = 'SELECT * FROM StoreManager.sales WHERE id = ?;';
+  const [sales] = await connection.execute(query, [id]);
+  return sales;
+}; 
+
 const getById = async (id) => {
   const query = `SELECT date, product_id AS productId, quantity 
   FROM StoreManager.sales_products AS p
@@ -40,10 +46,20 @@ const deleteP = async (id) => {
   return deletedsale.affectedRows;
 };
 
+const edit = async ({ productId, quantity }, id) => {
+  console.log(productId, quantity);
+  const query = `UPDATE StoreManager.sales_products SET quantity = ?
+  WHERE sale_id = ? AND product_id = ?;`;
+  const [editedSale] = await connection.execute(query, [quantity, id, productId]);
+  return editedSale.changedRows;
+};
+
 module.exports = {
   insertNew,
   productsIds,
   getAll,
   getById,
   deleteP,
+  validateID,
+  edit,
 };

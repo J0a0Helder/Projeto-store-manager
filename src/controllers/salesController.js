@@ -27,9 +27,18 @@ const deleteS = async (req, res) => {
   res.status(204).send();
 };
 
+const edit = async (req, res) => {
+  const { body } = req;
+  const { id } = req.params;
+  const editedSale = await salesService.edit(body, id);
+  if (editedSale.type) return res.status(404).json({ message: editedSale.message });
+  res.status(200).send(editedSale);
+};
+
 module.exports = {
   insertNew,
   getAll,
   getById,
   deleteS,
+  edit,
 };
