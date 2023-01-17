@@ -1,5 +1,4 @@
 const { schema } = require('./schemas');
-const salesModel = require('../models/salesModel'); 
 
 const inputsValidation = (req, res, next) => {
   const { body } = req;
@@ -17,14 +16,4 @@ const inputsValidation = (req, res, next) => {
   next();
 };
 
-const productIdValidation = async (req, res, next) => {
-  const { body } = req;
-  const idProductsSales = body.map((sale) => sale.productId);
-  const idsFromDB = await salesModel.productsIds();
-  const idProductsDB = idsFromDB.map((ids) => ids.id);
-  const result = idProductsSales.every((ids) => idProductsDB.includes(ids));
-  if (!result) return res.status(404).json({ message: 'Product not found' });
-  next();
-};
-
-module.exports = { inputsValidation, productIdValidation };
+module.exports = { inputsValidation };
