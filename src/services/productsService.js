@@ -34,10 +34,18 @@ const deleteP = async (id) => {
   return deletedProduct;
 };
 
+const search = async (filters) => {
+  const allProducts = await productsModel.getAll();
+  if (filters === '') return allProducts;
+  const productsFiltred = await productsModel.search(filters);
+  return productsFiltred;
+};
+
 module.exports = {
   getAll,
   getById,
   insertNew,
   edit,
   deleteP,
+  search,
 };

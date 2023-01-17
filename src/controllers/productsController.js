@@ -29,8 +29,14 @@ const edit = async (req, res) => {
 const deleteP = async (req, res) => {
   const { id } = req.params;
   const deletedProduct = await productsService.deleteP(id);
-  if (deletedProduct.type) { return res.status(404).json({ message: deletedProduct.message }); }
+  if (deletedProduct.type) return res.status(404).json({ message: deletedProduct.message });
   res.status(204).send();
+};
+
+const search = async (req, res) => {
+  const filters = Object.values(req.query)[0].toLowerCase();
+  const product = await productsService.search(filters);
+  return res.status(200).send(product);
 };
 
 module.exports = {
@@ -39,4 +45,5 @@ module.exports = {
   insertNew,
   edit,
   deleteP,
+  search,
 };
