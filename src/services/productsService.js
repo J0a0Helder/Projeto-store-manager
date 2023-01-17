@@ -26,9 +26,18 @@ const edit = async (name, id) => {
   return { id, name };
 };
 
+const deleteP = async (id) => {
+  const deletedProduct = await productsModel.deleteP(id);
+  if (deletedProduct === 0) {
+    return { type: 'INVALID_ID', message: 'Product not found' };
+  }
+  return deletedProduct;
+};
+
 module.exports = {
   getAll,
   getById,
   insertNew,
   edit,
+  deleteP,
 };
