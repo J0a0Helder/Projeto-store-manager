@@ -22,7 +22,7 @@ const deleteS = async (req, res) => {
   const { id } = req.params;
   const deletedSale = await salesService.deleteS(id);
   if (deletedSale.type) {
-    return res.status(404).json({ message: salesService.message });
+    return res.status(404).json({ message: deletedSale.message });
   }
   res.status(204).send();
 };
